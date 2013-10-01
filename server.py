@@ -1,13 +1,18 @@
+#!/usr/bin/env python
 from flask import Flask
 import time
 app = Flask(__name__)
 
-@app.route('/<name>')
-def hello_world(name):
-    time.sleep(1)
+prev_num = 0
+
+@app.route('/<int:num>')
+def hello_world(num):
+    global prev_num
+    time.sleep(1)    
     with open('log', 'a') as fd:
-        fd.write(name + '\n')
-    return 'Hello %s' % name
+        fd.write('%d - %d \n'%(num - prev_num ,num))
+    prev_num = num
+    return 'Hello %s' % num
 
 if __name__ == '__main__':
     app.debug = True
