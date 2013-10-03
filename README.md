@@ -20,12 +20,12 @@ with:
 
     pip install -r requirements.txt
     
-## log
-**log** file is created by **server.py** to log request params in order they 
+## server.log
+**server.log** file is created by **server.py** to log request params in order they 
 were passed from Nginx to **server.py**.
 
 # Results
-**log** file shows that Nginx send requests to upstream in exact order, they 
+**server.log** file shows that Nginx send requests to upstream in exact order, they 
 were sent by **client.py**. This simple test shows, that Nginx works as FIFO
 queue for requests to slow app-servers. In other words, your requests will be 
 served in exact same order they were sent(accepted by Nginx).
